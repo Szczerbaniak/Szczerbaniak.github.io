@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  font: italic normal bold 20px "Petit Formal Script", cursive, Arial;
+  font: italic normal normal 15px Arial, cursive, Arial;
 }
 
 body {
@@ -30,7 +30,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font: italic normal bold 40px "Petit Formal Script", cursive, Arial;
+  font: italic normal bold 40px Arial, cursive, Arial;
   color: rgb(255, 255, 255);
   background-color: rgb(150, 250, 83);
   border-radius: 10px 10px 0 0;
