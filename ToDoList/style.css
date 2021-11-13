@@ -14,8 +14,9 @@ body {
 }
 
 .list {
-  height: 600px;
-  width: 500px;
+  height: 700px;
+  max-width: 600px;
+  min-width: 400px;
   background-color: rgb(58, 56, 56);
   box-shadow: 2px 2px 10px;
   border-radius: 10px;
@@ -61,7 +62,7 @@ body {
 
 #tasks {
   margin: 20px 50px;
-  max-height: 430px;
+  max-height: 520px;
   overflow-y: auto;
 }
 
@@ -81,14 +82,13 @@ body {
 
 .taskContainer {
   min-height: 40px;
-  width: 370px;
   display: flex;
   border-bottom: 5px solid rgb(58, 56, 56);
 }
 
 .task {
   height: auto;
-  width: 335px;
+  min-width: 269px;
   font: italic normal normal 20px "Great Vibes", cursive, Arial;
   background-color: rgb(44, 43, 43);
   color: white;
@@ -98,7 +98,7 @@ body {
 
 .button {
   height: auto;
-  width: 45px;
+  min-width: 40px;
   border: none;
   background-color: rgb(27, 178, 248);
   color: white;
