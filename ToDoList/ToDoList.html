@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To Do List</title>
+</head>
+<body onload="taskListMaker()">
+    <div class="list">
+        <div class="listName">To Do List</div>
+        <div class="taskAdd">
+            <input type="text" name="taskInput" id="taskInput" placeholder="Wpisz nowe zadanie">
+            <button class="addButton" onclick="addTask()">Dodaj</button>
+        </div>
+        <div id="tasks">
+        </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
