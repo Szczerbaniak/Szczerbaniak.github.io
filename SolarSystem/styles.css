@@ -1,0 +1,789 @@
+:root {
+    --darkblue: #000016;
+    --blue: #030346;
+    --earthDiameter: 5px;
+    --astronomicalUnit: 120px;
+    --neon: rgb(255, 0, 192);
+    --neon1: rgb(0, 255, 192);
+    --neon2: rgb(0, 192, 255);
+    --year: 10s;
+    --orbitColor: gray;
+    --orbitWidth: 1px;
+    --vw: 140px;
+    --vh: 140px;
+    --JupMoonOrb: calc(var(--earthDiameter) * 11.2 + 10px);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p {
+    color: white;
+}
+
+p.Info {
+    margin-left: var(--size);
+}
+a {
+    text-decoration: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-color: var(--blue);
+    background-image: radial-gradient(circle closest-side, var(--blue) 20%, var(--darkblue)150%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden; 
+    }
+
+.buttons {
+    position: absolute;
+    bottom:0;
+}
+
+.Info {
+    width: 10px;
+    height: 10px;
+    z-index: 2;
+}
+
+.solarHelper{
+    color: blue;
+    border-color: blue;
+    background: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-style: solid;
+    padding: 0.25em 1em;
+    font-size: 1em;
+    border-radius: 0.5em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.button {
+    color: var(--neon);
+    border-color: var(--neon);
+    border-style: solid;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    padding: 0.25em 1em;
+    font-size: 2em;
+    border-radius: 0.30em;
+    cursor: pointer;
+    margin-left: 60%;
+
+    text-shadow: 0 0 0.5em var(--neon), 0 0 0.2em var(--neon);
+    box-shadow: inset 0 0 0.5em 0 var(--neon), 0 0 0.5em 0 var(--neon);
+
+    position: relative;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    background: var(--neon);
+    top: 130%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.45);
+    filter: blur(0.9em);
+}
+
+.button:hover {
+    background: var(--neon);
+    color: black;
+    text-shadow: none;
+}
+
+.button1 {
+    color: var(--neon1);
+    border-color: var(--neon1);
+    border-style: solid;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    padding: 0.25em 1em;
+    font-size: 2em;
+    border-radius: 0.30em;
+    cursor: pointer;
+    margin-left: 60%;
+
+    text-shadow: 0 0 0.5em var(--neon1), 0 0 0.2em var(--neon1);
+    box-shadow: inset 0 0 0.5em 0 var(--neon1), 0 0 0.5em 0 var(--neon1);
+
+    position: relative;
+}
+
+.button1::before {
+    content: '';
+    position: absolute;
+    background: var(--neon1);
+    top: 130%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.45);
+    filter: blur(0.9em);
+}
+
+.button1:hover {
+    background: var(--neon1);
+    color: black;
+    text-shadow: none;
+}
+
+.button2 {
+    color: var(--neon2);
+    border-color: var(--neon2);
+    border-style: solid;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    padding: 0.25em 1em;
+    font-size: 2em;
+    border-radius: 0.30em;
+    cursor: pointer;
+    margin-left: 60%;
+
+    text-shadow: 0 0 0.5em var(--neon2), 0 0 0.2em var(--neon2);
+    box-shadow: inset 0 0 0.5em 0 var(--neon)2, 0 0 0.5em 0 var(--neon2);
+
+    position: relative;
+}
+
+.button2::before {
+    content: '';
+    position: absolute;
+    background: var(--neon)2;
+    top: 130%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    transform: perspective(1em) rotateX(40deg) scale(1, 0.45);
+    filter: blur(0.9em);
+}
+
+.button2:hover {
+    background: var(--neon2);
+    color: black;
+    text-shadow: none;
+}
+
+.window {
+    width: 90vw;
+    height: 70vh;
+    background-color: rgba(7, 0, 44, 0.582);
+    border-radius: 30px;
+    position: absolute;
+    z-index: 2;
+    backdrop-filter: blur(2px);
+
+}
+
+
+
+
+.planet, .star, .moons ,.belt {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    top: calc(50% - var(--size) / 2);
+    left: calc(50% - var(--size) / 2);
+    border-radius: 50%;
+}
+
+.sun {
+    --size: calc(var(--earthDiameter) * 15);
+    background: linear-gradient(40deg, rgb(218, 137, 32), yellow);
+}
+
+ul#descriptions {
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    list-style: none;
+    z-index: 1;
+}
+ul#descriptions h2 {
+    cursor: pointer;
+    color: #4b64f5;
+    -webkit-transition: all 0.15s ease-in;
+    -moz-transition: all 0.15s ease-in;
+    -o-transition: all 0.15s ease-in;
+    transition: all 0.15s ease-in;
+    font-size: 20px;
+    position: relative;
+    z-index: 4;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+	margin-bottom: -15px;
+    line-height: 50px;
+    text-align: left;
+}
+ul#descriptions h2:hover {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+}
+ul#descriptions li p {
+    position: absolute;
+    left: -250px;
+    top: 0;
+    width: 200px;
+    display: inline;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 13px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    background: #0f132c;
+    padding: 30px;
+    color: #767892;
+    line-height: 1.7;
+    z-index: 4;
+    border: 1px solid #1c203c;
+}
+ul#descriptions h2:hover+p {
+    visibility: visible;
+    opacity: 0.9;
+    left: -210px;
+}
+
+ul#elseView {
+    position: absolute;
+    bottom: 1%;
+    float: center;
+    word-spacing: 10px;
+    list-style: none;
+    z-index: 1;
+}
+ul#elseView h2 {
+    cursor: pointer;
+    color: #4b64f5;
+    -webkit-transition: all 0.15s ease-in;
+    -moz-transition: all 0.15s ease-in;
+    -o-transition: all 0.15s ease-in;
+    transition: all 0.15s ease-in;
+    font-size: 20px;
+    position: relative;
+    z-index: 4;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+	margin-bottom: -15px;
+    line-height: 50px;
+    text-align: left;
+    display: inline-block;
+}
+ul#elseView h2:hover {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+}
+ul#elseView li p {
+    position: absolute;
+    left: -250px;
+    top: 0;
+    width: 200px;
+    display: inline;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 13px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    background: #0f132c;
+    padding: 30px;
+    color: #767892;
+    line-height: 1.7;
+    z-index: 4;
+    border: 1px solid #1c203c;
+}
+ul#elseView h2:hover+p {
+    visibility: visible;
+    opacity: 0.9;
+    left: -210px;
+}
+
+.asteroid{
+    content: '';
+    position: absolute;
+    width: calc(var(--astronomicalUnit) * 3.6);
+    height: calc(var(--astronomicalUnit) * 3.6);
+    border: var(--earthDiameter) dashed var(--orbitColor);
+    border-radius: 100%;
+    border-width: 5px;
+    animation: center 2s infinite linear;
+}
+
+.asteroid2{
+    content: '';
+    position: absolute;
+    width: calc(var(--astronomicalUnit) * 11.6);
+    height: calc(var(--astronomicalUnit) * 11.6);
+    border: var(--earthDiameter) dashed var(--orbitColor);
+    border-radius: 100%;
+    border-width: 5px;
+    animation: center 2s infinite linear;
+}
+
+.mercury {
+    --size: calc(var(--earthDiameter) * 1.38);
+    background: gray;
+    animation: mercury calc(var(--year) * 0.24) infinite linear;
+
+}
+
+.mercury::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--astronomicalUnit) * 0.9);
+    height: calc(var(--astronomicalUnit) * 0.9);
+    border: var(--earthDiameter) solid var(--orbitColor);
+    border-radius: 100%;
+    border-width: var(--orbitWidth);
+    transform: translate(-100%, -50%) rotate(0deg);
+}
+
+.venus {
+    --size: calc(var(--earthDiameter) * 1.94);
+    background: rgb(255, 196, 0);
+    animation: venus calc(var(--year) * 0.61) infinite linear;
+}
+
+.venus::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--astronomicalUnit) * 1.4);
+    height: calc(var(--astronomicalUnit) * 1.4);
+    border: var(--earthDiameter) solid var(--orbitColor);
+    border-radius: 100%;
+    border-width: var(--orbitWidth);
+    transform: translate(-100%, -50%) rotate(0deg);
+}
+
+.earth {
+    --size: calc(var(--earthDiameter) * 2);
+    background: green;
+    animation: earth calc(var(--year) * 1) infinite linear;
+}
+
+.earth::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--astronomicalUnit) * 2);
+    height: calc(var(--astronomicalUnit) * 2);
+    border: var(--earthDiameter) solid var(--orbitColor);
+    border-width: var(--orbitWidth);
+    border-radius: 100%;
+    transform: translate(-100%, -50%) rotate(0deg);
+}
+
+.Moon {
+    --size: calc(var(--earthDiameter) * 0.7);
+    background: gray;
+    animation: Moon calc(var(--year) / 365) infinite linear;
+}
+
+.mars {
+    --size: calc(var(--earthDiameter) * 1.53);
+    background: red;
+    animation: mars calc(var(--year) * 1.88) infinite linear;
+}
+
+.mars::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--astronomicalUnit) * 3);
+    height: calc(var(--astronomicalUnit) * 3);
+    border: var(--earthDiameter) solid var(--orbitColor);
+    border-width: var(--orbitWidth);
+    border-radius: 100%;
+    transform: translate(-100%, -50%) rotate(0deg);
+}
+
+.Fobos {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: Fobos calc(var(--year) / 292) infinite linear;
+}
+
+.Deimos {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: Deimos calc(var(--year) / 150) infinite linear;
+}
+
+
+.jupiter {
+    --size: calc(var(--earthDiameter) * 11.2);
+    background: repeating-linear-gradient( 6deg,rgb(87, 85, 77) 22px,rgb(245, 244, 245) 16px,rgb(216, 172, 134) 30px,rgb(251, 252, 250) 30px);
+    animation: jupiter calc(var(--year) * 11.86) infinite linear;
+}
+
+.jupiter::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--astronomicalUnit) * 4.4);
+    height: calc(var(--astronomicalUnit) * 4.4);
+    border: var(--earthDiameter) solid var(--orbitColor);
+    border-width: var(--orbitWidth);
+    border-radius: 100%;
+    transform: translate(-100%, -50%) rotate(0deg);
+}
+
+.JupMoon {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: JupMoon calc(var(--year) * 0.1) infinite linear;
+
+}
+
+.JupMoon1 {
+    --size: calc(var(--earthDiameter) * 0.7);
+    background: gray;
+    animation: JupMoon calc(var(--year) * 0.06) infinite linear;
+}
+
+.JupMoon2 {
+    --size: calc(var(--earthDiameter) * 0.7);
+    background: gray;
+    animation: JupMoon calc(var(--year) * 0.05) infinite linear;
+}
+
+.JupMoon3 {
+    --size: calc(var(--earthDiameter) * 0.7);
+    background: gray;
+    animation: JupMoon calc(var(--year) * 0.08) infinite linear;
+}
+
+.JupMoon4 {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: JupMoon1 calc(var(--year) * 0.2) infinite linear;
+}
+
+.JupMoon5 {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: JupMoon1 calc(var(--year) * 0.25) infinite linear;
+}
+
+.JupMoon6 {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: JupMoon calc(var(--year) * 0.02) infinite linear;
+}
+
+.JupMoon7 {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: JupMoon calc(var(--year) * 0.05) infinite linear;
+}
+
+.JupMoon8 {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: JupMoon calc(var(--year) * 0.01) infinite linear;
+}
+
+.JupMoon9 {
+    --size: calc(var(--earthDiameter) * 0.9);
+    background: gray;
+    animation: JupMoon1 calc(var(--year) * 0.3) infinite linear;
+}
+
+.saturn {
+    --size: calc(var(--earthDiameter) * 9.44);
+    background: rgb(214, 208, 139);
+    animation: saturn calc(var(--year) * 29.44) infinite linear;
+}
+
+.saturn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--astronomicalUnit) * 7);
+    height: calc(var(--astronomicalUnit) * 7);
+    border: var(--earthDiameter) solid var(--orbitColor);
+    border-width: var(--orbitWidth);
+    border-radius: 100%;
+    transform: translate(-100%, -50%) rotate(0deg);
+}
+
+.rings {
+    border-radius: 50%;
+    position:absolute;
+
+    opacity: 0.7;
+    transform: rotatex(80deg);
+    top: -95%;
+    left: -100%;
+}
+
+.ring {
+    border:solid 10px #96866f;
+    width: var(--vw);
+    height: var(--vh);
+    border-top: none;
+}
+
+.ring1 {
+    border:solid 20px #96866f;
+    width: var(--vw);
+    height: var(--vh);
+    border-top: none;
+
+}
+
+.ring2 {
+    border:solid 10px #96866f;
+    width: var(--vw);
+    height: var(--vh);
+    border-top: none;
+
+}
+
+.ring3 {
+    border:solid 5px #96866f;
+    width: 160px;
+    height: 160px;
+    top: -116%;
+    left: -120%;
+    border-top: none;
+
+}
+
+.uranus {
+    --size: calc(var(--earthDiameter) * 4);
+    background: lightblue;
+    animation: uranus calc(var(--year) * 84.07) infinite linear;
+}
+
+.uranus::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--astronomicalUnit) * 8);
+    height: calc(var(--astronomicalUnit) * 8);
+    border: var(--earthDiameter) solid var(--orbitColor);
+    border-width: var(--orbitWidth);
+    border-radius: 100%;
+    transform: translate(-100%, -50%) rotate(0deg);
+}
+
+.neptune {
+    --size: calc(var(--earthDiameter) * 3.88);
+    background: blue;
+    animation: neptune calc(var(--year) * 164.87) infinite linear;
+}
+
+.neptune::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(var(--astronomicalUnit) * 10);
+    height: calc(var(--astronomicalUnit) * 10);
+    border: var(--earthDiameter) solid var(--orbitColor);
+    border-width: var(--orbitWidth);
+    border-radius: 100%;
+    transform: translate(-100%, -50%) rotate(0deg);
+}
+
+
+
+
+@keyframes center {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 0));
+    }
+
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 0));
+    }
+}
+
+@keyframes mercury {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 0.45));
+    }
+
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 0.45));
+    }
+}
+
+@keyframes venus {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 0.7))
+    }
+
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 0.7));
+    }
+}
+
+@keyframes earth {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 1))
+    }
+
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 1));
+    }
+}
+
+@keyframes Moon {
+    from {
+        transform: rotate(0) translateY(calc(var(--astronomicalUnit) *  0.1));
+    }
+
+    to {
+        transform: rotate(360deg) translateY(calc(var(--astronomicalUnit) *  0.1));
+    }
+}
+
+@keyframes mars {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 1.5))
+    }
+
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 1.5));
+    }
+}
+
+@keyframes Fobos {
+    from {
+        transform: rotate(0) translateY(calc(var(--astronomicalUnit) *  0.06));
+    }
+
+    to {
+        transform: rotate(360deg) translateY(calc(var(--astronomicalUnit) *  0.06));
+    }
+}
+
+@keyframes Deimos {
+    from {
+        transform: rotate(0) translateY(calc(var(--astronomicalUnit) *  0.1));
+    }
+
+    to {
+        transform: rotate(360deg) translateY(calc(var(--astronomicalUnit) *  0.1));
+    }
+}
+
+@keyframes jupiter {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 2.2))
+    }
+
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 2.2));
+    }
+}
+
+@keyframes JupMoon {
+    from {
+        transform: rotate(0) translateY(calc(var(--astronomicalUnit) *  0.3));
+    }
+
+    to {
+        transform: rotate(360deg) translateY(calc(var(--astronomicalUnit) *  0.3));
+    }
+}
+
+@keyframes JupMoon1 {
+    from {
+        transform: rotate(0) translateY(calc(var(--astronomicalUnit) *  0.4));
+    }
+
+    to {
+        transform: rotate(360deg) translateY(calc(var(--astronomicalUnit) *  0.4));
+    }
+}
+
+@keyframes saturn {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 3.5));
+    }
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 3.5));
+    }
+}
+
+@keyframes uranus {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 4))
+    }
+
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 4));
+    }
+}
+
+@keyframes neptune {
+    from {
+        transform: rotate(0) translateX(calc(var(--astronomicalUnit) * 5))
+    }
+
+    to {
+        transform: rotate(360deg) translateX(calc(var(--astronomicalUnit) * 5));
+    }
+}
+
+@keyframes rotate {
+
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
