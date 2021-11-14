@@ -92,6 +92,7 @@ body {
 .task {
   height: auto;
   min-width: 269px;
+  max-width: 80vw;
   background-color: rgb(44, 43, 43);
   color: white;
   padding-top: 5px;
