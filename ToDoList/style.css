@@ -15,9 +15,10 @@ body {
 }
 
 .list {
-  height: 700px;
-  max-width: 600px;
-  min-width: 400px;
+  min-height: 90vh;
+  max-height: 700px;
+  max-width: 500px;
+  min-width: 40vw;
   background-color: rgb(58, 56, 56);
   box-shadow: 2px 2px 10px;
   border-radius: 10px;
@@ -26,6 +27,7 @@ body {
 .listName {
   height: 60px;
   width: 100%;
+  min-width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
