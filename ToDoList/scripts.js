@@ -12,7 +12,7 @@ function addTask() {
     for(i = 0; i <incorrecttInput.length; i++) {
         if(newTask.toLowerCase().includes(incorrecttInput[i])) {
             correctInput = false;
-            window.alert(`Zadanie nie może zawierać ${incorrecttInput[i]}`);
+            window.alert(`Zadanie nie powinno zawierać ${incorrecttInput[i]}, może to powodować błędy`);
         }else{
             correctInput = true;
         }
